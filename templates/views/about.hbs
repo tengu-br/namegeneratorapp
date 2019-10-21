@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Name Generator - About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="/css/bare.css" rel="stylesheet">
+</head>
+
+<body>
+    {{>header}}
+    <section>
+        <h2>What</h2>
+        <p align='justify'> This website uses a language's rules to randomly generate names. A couple of examples are:
+            Klingon names can only start with a consonant, Valyrian names must and with a vowel or s, n, t, z, r. A more
+            complete set of rules used can be found under the "Sources" menu for each language</p>
+        <h2>How</h2>
+        <p align='justify'>This minimalist website runs on Node.js and uses bare.css for basic styling. It
+            really cannot get much faster than this. The raw website makes just 7 requests totalling about 25KB of data
+            (compared to the world average of 74 requests for 2000KB of data, source: <a href='https://httparchive.org'
+                target='blank'>httparchive.org</a> ) </p>
+        {{!-- <h2>Help</h2>
+        <p align='justify'>If you got a nice username, handle or character name out of this and want to send some love
+            feel free to donate through PayPal.</p> --}}
+        <h2>What's Next</h2>
+        <p align='justify'> Instead of waiting until it is finished. I decided to deploy this application while I'm
+            working on it, so do expect many more features and languages to come next! The process of doing research
+            onto fictional and/or constructed languages, implementing it and documenting it's sources can take some
+            time...
+        </p>
+        <h2>Contact</h2>
+        <p align='justify'>If you have suggestions and/or questions, feel encouraged to send an e-mail to <a
+                href='mailto:contact.namegeneratorapp@gmail.com'>contact.namegeneratorapp@gmail.com</a></p>
+    </section>
+    {{>footer}}
+</body>
+
+</html>
