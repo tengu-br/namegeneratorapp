@@ -664,7 +664,7 @@ const namefy = async (flair) => {
             })
             break;
         default:
-            name = 'zero'
+            name = ''
     }
     return name
 }
@@ -698,7 +698,7 @@ const namefyInfo = (flair) => {
             info = "The language of the old men of Númenor in The Lord of the Rings universe"
             break;
         default:
-                info = 'zero'
+            info = ''
     }
     return info
 }

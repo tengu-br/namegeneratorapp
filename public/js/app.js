@@ -8,7 +8,7 @@ nameForm.addEventListener('submit', (e) => {
     // messageOne.textContent = ''
     // messageTwo.textContent = ''
 
-    flair = 1
+    flair = 0
 
     if (document.querySelector('input[name=flair]:checked')) {
         flair = document.querySelector('input[name=flair]:checked').value;
@@ -32,7 +32,8 @@ nameForm.addEventListener('click', (e) => {
 
     // messageOne.textContent = ''
     // messageTwo.textContent = ''
-
+    
+    flair = 0
 
     if (document.querySelector('input[name=flair]:checked')) {
         flair = document.querySelector('input[name=flair]:checked').value;
