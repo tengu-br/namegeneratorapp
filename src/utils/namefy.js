@@ -179,9 +179,9 @@ valyrian = async (callback) => {
         }
 
     }
-    
 
-    
+
+
     name = name.join('')
     name = capitalize(name)
 
@@ -262,7 +262,7 @@ klingon = async (callback) => {
 }
 
 sindarin = async (callback) => {
-    //Klingon
+    //Sindarin
     //consonants: ['p','b','m','f','v','th','dh','t','d','n','s','rh','r','lh','l','j','c','g','ng','ch','hw','w','h']
     //vowels: ['i','y','e','a','u,'o']
     //endings: ['il','el','eth','wen','iel','ien','iell','dir','ion','on','nir','ben','dil','ndil','or','wi','dor','ian','ion']
@@ -292,7 +292,7 @@ sindarin = async (callback) => {
     lengthLeft = length
     consonantPool = ['p', 'b', 'm', 'f', 'v', 'th', 'dh', 't', 'd', 'n', 's', 'rh', 'r', 'lh', 'l', 'j', 'c', 'g', 'ng', 'ch', 'hw', 'w', 'h'] //23 sounds
     vowelPool = ['i', 'y', 'e', 'a', 'u', 'o'] //6 sounds
-    suffixPool = ['il','el','eth','wen','iel','ien','iell','dir','ion','on','nir','ben','dil','ndil','or','wi','dor','ian','ion']
+    suffixPool = ['il', 'el', 'eth', 'wen', 'iel', 'ien', 'iell', 'dir', 'ion', 'on', 'nir', 'ben', 'dil', 'ndil', 'or', 'wi', 'dor', 'ian', 'ion']
 
     while (lengthLeft > 0) {
         if (lengthLeft >= 3) {
@@ -340,10 +340,10 @@ sindarin = async (callback) => {
                     // VC -> validate constraint 1 ->  -2
                     letterIndex = await indexPicker(6)
                     name[length - lengthLeft] = vowelPool[letterIndex]
-                    lengthLeft--
 
                     letterIndex = await indexPicker(23)
                     name[length - lengthLeft] = consonantPool[letterIndex]
+                    lengthLeft--
                     lengthLeft--
                     break;
                 case 1:
@@ -355,7 +355,6 @@ sindarin = async (callback) => {
                     letterIndex = await indexPicker(6)
                     name[length - lengthLeft] = vowelPool[letterIndex]
                     lengthLeft--
-                    break;
             }
         } else {
             //V
@@ -387,6 +386,7 @@ sindarin = async (callback) => {
                         name[i] = 'ú'
                         break
                     case 'y':
+                        break;
                         name[i] = 'ý'
                         break
                 }
@@ -395,7 +395,234 @@ sindarin = async (callback) => {
     }
     //Suffix
     letterIndex = await indexPicker(19)
-    name[length+1] = suffixPool[letterIndex]
+    name[length + 1] = suffixPool[letterIndex]
+    name = name.join('')
+    name = capitalize(name)
+    callback(undefined, name)
+}
+
+khuzdul = async (callback) => {
+    //Khuzdul
+    //consonants: ['b','f','m','t','d','th','s','z','n','r','l','j','k','g','kh','gh','h'] // 17 sounds
+    //vowels: ['a','i','e','o','u']
+    //endings: ['il','el','eth','wen','iel','ien','iell','dir','ion','on','nir','ben','dil','ndil','or','wi','dor','ian','ion']
+    //syllables: CV(C)(C)... or VCC
+    //constraints: none
+    //length: avg 6 ( 5 30% / 6 30% / 7 20% / 8 20%)
+
+    lengthMaker = Math.random()
+
+    length = 5
+    if (lengthMaker > 0.00) {
+        length = 5
+        if (lengthMaker > 0.30) {
+            length = 6
+            if (lengthMaker > 0.60) {
+                length = 7
+            } if (lengthMaker > 0.80) {
+                length = 8
+            }
+        }
+    }
+
+
+    //Syllables
+    name = []
+    lengthLeft = length
+    consonantPool = ['b', 'f', 'm', 't', 'd', 'th', 's', 'z', 'n', 'r', 'l', 'j', 'k', 'g', 'kh', 'gh', 'h'] // 17 sounds
+    vowelPool = ['i', 'e', 'a', 'u', 'o'] //5 sounds
+
+    while (lengthLeft > 0) {
+        if (lengthLeft >= 4) {
+            rand = await indexPicker(100)
+            if (rand < 70) {
+                //CV
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(5)
+                name[length - lengthLeft] = vowelPool[letterIndex]
+                lengthLeft--
+            } else if (rand < 90) {
+                //CVC
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(5)
+                name[length - lengthLeft] = vowelPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+            } else {
+                //CVCC
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(5)
+                name[length - lengthLeft] = vowelPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+            }
+        } else if (lengthLeft >= 3) {
+            rand = await indexPicker(100)
+            if (rand < 80) {
+                //CV
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(5)
+                name[length - lengthLeft] = vowelPool[letterIndex]
+                lengthLeft--
+            } else {
+                //CVC
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(5)
+                name[length - lengthLeft] = vowelPool[letterIndex]
+                lengthLeft--
+
+                letterIndex = await indexPicker(17)
+                name[length - lengthLeft] = consonantPool[letterIndex]
+                lengthLeft--
+            }
+        }
+        else {
+            //CV
+            letterIndex = await indexPicker(17)
+            name[length - lengthLeft] = consonantPool[letterIndex]
+            lengthLeft--
+
+            letterIndex = await indexPicker(5)
+            name[length - lengthLeft] = vowelPool[letterIndex]
+            lengthLeft--
+        }
+    }
+
+    //Add accent (20%)
+    for (let i = 0; i < length; i++) {
+        if (vowelPool.includes(name[i])) {
+            accentMaker = indexPicker(5)
+            if (accentMaker > 3) {
+                switch (name[i]) {
+                    case 'a':
+                        name[i] = 'â'
+                        break
+                    case 'e':
+                        name[i] = 'ê'
+                        break
+                    case 'i':
+                        name[i] = 'î'
+                        break
+                    case 'o':
+                        name[i] = 'ô'
+                        break
+                    case 'u':
+                        name[i] = 'û'
+                        break
+                }
+            }
+        }
+    }
+
+    name = name.join('')
+    name = capitalize(name)
+    callback(undefined, name)
+}
+
+adunaic = async (callback) => {
+    //Adunaic
+    //consonants: ['p','b','f','v','m','t','d','s','z','n','r','l','j','k','g','x','w','h'] // 18 sounds
+    //vowels: ['a','i','u'] // 3 sounds
+    //syllables: CV VC 
+    //constraints: three vowels
+    //length: avg 6 ( 5 40% / 6 30% / 7 30% )
+
+
+    lengthMaker = Math.random()
+
+    length = 5
+    if (lengthMaker > 0.00) {
+        length = 5
+        if (lengthMaker > 0.40) {
+            length = 6
+            if (lengthMaker > 0.70) {
+                length = 7
+            }
+        }
+    }
+
+
+    //Syllables
+    name = []
+    lengthLeft = length
+    consonantPool = ['p', 'b', 'v', 'm', 't', 'd', 's', 'z', 'n', 'r', 'l', 'k', 'g', 'h'] // 14 sounds
+    // vowelPool = ['i', 'a', 'u','ō','ē'] //5 sounds
+    vowelPool = ['i', 'i', 'a', 'a', 'u', 'u', 'ō', 'ē'] //8 sounds doubling normal vowels
+
+    while (lengthLeft > 0) {
+        syllableMaker = Math.random()
+        if (syllableMaker > 0.3) {
+            //CV
+            letterIndex = await indexPicker(14)
+            name[length - lengthLeft] = consonantPool[letterIndex]
+            lengthLeft--
+
+            letterIndex = await indexPicker(8)
+            name[length - lengthLeft] = vowelPool[letterIndex]
+            lengthLeft--
+        }
+        else {
+            //CVC
+            letterIndex = await indexPicker(14)
+            name[length - lengthLeft] = consonantPool[letterIndex]
+            lengthLeft--
+
+            letterIndex = await indexPicker(8)
+            name[length - lengthLeft] = vowelPool[letterIndex]
+            lengthLeft--
+
+            letterIndex = await indexPicker(14)
+            name[length - lengthLeft] = consonantPool[letterIndex]
+            lengthLeft--
+        }
+
+    }
+
+    //Add accent (10%)
+    for (let i = 0; i < length; i++) {
+        if (vowelPool.includes(name[i])) {
+            accentMaker = indexPicker(10)
+            if (accentMaker > 8) {
+                switch (name[i]) {
+                    case 'a':
+                        name[i] = 'ā'
+                        break
+                    case 'i':
+                        name[i] = 'ī'
+                        break
+                    case 'u':
+                        name[i] = 'ū'
+                        break
+                }
+            }
+        }
+    }
+
     name = name.join('')
     name = capitalize(name)
     callback(undefined, name)
@@ -403,8 +630,6 @@ sindarin = async (callback) => {
 
 const namefy = async (flair) => {
     //quenya (light elves, lotr)
-    //khuzdul (dwarves, lotr)
-    //adunaic (old men, lotr)
     //parseltongue (harry potter) maybe?
     //na'vi
     switch (flair) {
@@ -428,10 +653,57 @@ const namefy = async (flair) => {
                 name = response
             })
             break;
+        case 5:
+            await khuzdul((error, response) => {
+                name = response
+            })
+            break;
+        case 6:
+            await adunaic((error, response) => {
+                name = response
+            })
+            break;
         default:
             name = 'zero'
     }
     return name
 }
 
-module.exports = namefy
+const namefyInfo = (flair) => {
+    switch (flair) {
+        case 1:
+            //Dothraki
+            // info = "The language spoken by the Dothraki people in the works of George R. R. Martin's A Song of Ice and Fire and the television adaption Game of Thrones"
+            info = "The language spoken by the Dothraki people in the Game of Thrones universe"
+            break;
+        case 2:
+            //Valyrian
+            // info = "The language used in the old Valyrian Empire in the works of George R. R. Martin's A Song of Ice and Fire and the television adaption Game of Thrones"
+            info = "The language used in the old Valyrian Empire in the Game of Thrones universe"
+            break;
+        case 3:
+            //Klingon
+            info = "The language of the Klingon species in the science fiction franchise Star Trek"
+            break;
+        case 4:
+            //Sindarin
+            info = "The language of the Grey Elves in The Lord of the Rings universe"
+            break;
+        case 5:
+            //Khuzdul
+            info = "The secret language of the Dwarves in The Lord of the Rings universe"
+            break;
+        case 6:
+            //Adunaic
+            info = "The language of the old men of Númenor in The Lord of the Rings universe"
+            break;
+        default:
+                info = 'zero'
+    }
+    return info
+}
+
+module.exports = {
+    namefy,
+    namefyInfo
+}

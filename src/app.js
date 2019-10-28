@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
-const namefy = require('./utils/namefy')
+const { namefy, namefyInfo } = require('./utils/namefy')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -25,6 +25,13 @@ app.get('/generate', async (req, res) => {
     const name = await namefy(parseInt(req.query.flair))
     return res.send({
         name
+    })
+})
+
+app.get('/info', async (req, res) => {
+    const info = await namefyInfo(parseInt(req.query.flair))
+    return res.send({
+        info
     })
 })
 
