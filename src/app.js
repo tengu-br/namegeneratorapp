@@ -23,8 +23,10 @@ app.get('', (req, res) => {
 
 app.get('/generate', async (req, res) => {
     const name = await namefy(parseInt(req.query.flair))
+    const info = await namefyInfo(parseInt(req.query.flair))
     return res.send({
-        name
+        name,
+        info
     })
 })
 

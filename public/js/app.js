@@ -15,39 +15,39 @@ nameForm.addEventListener('submit', (e) => {
     }
 
     fetch('/generate?flair=' + flair).then((response) => {
-        response.json().then(({ error, name }) => {
+        response.json().then(({ error, name, info}) => {
             if (error) {
                 messageOne.textContent = error
                 messageTwo.textContent = ''
             } else {
-                // messageOne.textContent = info
+                messageOne.textContent = info
                 messageTwo.textContent = name
             }
         })
     })
 })
 
-nameForm.addEventListener('click', (e) => {
+// nameForm.addEventListener('click', (e) => {
 
 
-    // messageOne.textContent = ''
-    // messageTwo.textContent = ''
-    
-    flair = 0
+//     // messageOne.textContent = ''
+//     // messageTwo.textContent = ''
 
-    if (document.querySelector('input[name=flair]:checked')) {
-        flair = document.querySelector('input[name=flair]:checked').value;
-    }
+//     flair = 0
 
-    fetch('/info?flair=' + flair).then((response) => {
-        response.json().then(({ error, info }) => {
-            if (error) {
-                messageOne.textContent = error
-                messageTwo.textContent = ''
-            } else {
-                messageOne.textContent = info
-                messageTwo.textContent = ''
-            }
-        })
-    })
-})
+//     if (document.querySelector('input[name=flair]:checked')) {
+//         flair = document.querySelector('input[name=flair]:checked').value;
+//     }
+
+//     fetch('/info?flair=' + flair).then((response) => {
+//         response.json().then(({ error, info }) => {
+//             if (error) {
+//                 messageOne.textContent = error
+//                 messageTwo.textContent = ''
+//             } else {
+//                 messageOne.textContent = info
+//                 messageTwo.textContent = ''
+//             }
+//         })
+//     })
+// })
