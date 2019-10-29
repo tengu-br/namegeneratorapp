@@ -340,10 +340,10 @@ sindarin = async (callback) => {
                     // VC -> validate constraint 1 ->  -2
                     letterIndex = await indexPicker(6)
                     name[length - lengthLeft] = vowelPool[letterIndex]
+                    lengthLeft--
 
                     letterIndex = await indexPicker(23)
                     name[length - lengthLeft] = consonantPool[letterIndex]
-                    lengthLeft--
                     lengthLeft--
                     break;
                 case 1:
