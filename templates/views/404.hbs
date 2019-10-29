@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 
+<html>
+
+<head>
+    <title>Error 404</title>
+    <link href="/css/bare.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+</head>
+
 <body>
+    {{>header}}
+    <p>{{message}}</p>
+    {{>footer}}
+</body>
 
-    <html>
-
-    <head>
-        <link rel="icon" href="/img/weather.png">
-        <title>Error 404</title>
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
-
-    <body>
-        {{>header}}
-        {{message}}
-        {{>footer}}
-    </body>
-
-    </html>
+</html>

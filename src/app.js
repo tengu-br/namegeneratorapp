@@ -41,6 +41,29 @@ app.get('/about', (req, res) => {
     res.render('about')
 })
 
+app.get('/dothraki', (req, res) => {
+    res.render('sources/dothraki')
+})
+
+app.get('/valyrian', (req, res) => {
+    res.render('sources/valyrian')
+})
+
+app.get('/klingon', (req, res) => {
+    res.render('sources/klingon')
+})
+
+app.get('/sindarin', (req, res) => {
+    res.render('sources/sindarin')
+})
+
+app.get('/khuzdul', (req, res) => {
+    res.render('sources/khuzdul')
+})
+app.get('/adunaic', (req, res) => {
+    res.render('sources/adunaic')
+})
+
 app.get('*', (req, res) => {
     res.render('404', {
         message: 'No such page'
